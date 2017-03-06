@@ -16,12 +16,13 @@ public class User {
     private List<AMA> listOfAMAsCreated;
 
     public User(){
-
+	listOfAMAsCreated = new ArrayList<AMA>();
     }
 
     public User (String handle, String name){
         this.handle = handle;
         this.name = name;
+		listOfAMAsCreated = new ArrayList<AMA>();
     }
 
     public String getHandle() {

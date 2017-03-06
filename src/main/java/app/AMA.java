@@ -22,11 +22,13 @@ public class AMA {
 
    // Default constructor
    public AMA(){
+	   listOfKeyWords =  new ArrayList<String>();
 
    }
 
     public AMA ( String description){
         this.description = description;
+		listOfKeyWords =  new ArrayList<String>();
     }
 
    public AMA ( String description, List<String> listOfKeyWords ){

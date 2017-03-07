@@ -2,22 +2,33 @@ package app;
 
 import app.AMA;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * Created by joelprakash on 3/5/2017.
  */
+@Entity
 public class User {
+
+    @Id
+    @GeneratedValue
+    private long id;
 
     private String handle;
 
     private String name;
 
+    @OneToMany
     private List<AMA> listOfAMAsCreated;
 
     public User(){
-	listOfAMAsCreated = new ArrayList<AMA>();
+	    listOfAMAsCreated = new ArrayList<AMA>();
     }
 
     public User (String handle, String name){
@@ -53,4 +64,14 @@ public class User {
     public void addAMAToUserList( AMA ama){
         this.listOfAMAsCreated.add(ama);
     }
+
+    @Override
+    public String toString(){
+        // need a way to print out the arraylist that works with CommandLineRunner.
+
+        //return String.format("User[id=%d, handle='%s', name='%s', amas='%s']", id, handle, name, Arrays.toString(listOfAMAsCreated.toArray()));
+        return String.format("User[id=%d, handle='%s', name='%s']", id, handle, name);
+        //return Arrays.toString(listOfAMAsCreated.toArray());
+    }
+
 }

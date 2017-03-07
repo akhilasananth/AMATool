@@ -1,24 +1,30 @@
 package app;
 
+import javax.persistence.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by joelprakash on 3/5/2017.
  */
-
+@Entity
 public class AMA {
 
+    @Id
+    @GeneratedValue
+    private long AMA_ID;
 
-    private int AMA_ID;
-
+    @OneToOne
     private User creator;
 
    private String description;
+
+   @ElementCollection
    private List<String> listOfKeyWords;
 
    // Default constructor
@@ -39,7 +45,7 @@ public class AMA {
     // MM/dd/yyyy
    private Date deadlineToVote;
 
-    public int getAMA_ID() {
+    public long getAMA_ID() {
         return AMA_ID;
     }
 
@@ -96,5 +102,17 @@ public class AMA {
 
     public void setListOfKeyWords(List<String> listOfKeyWords) {
         this.listOfKeyWords = listOfKeyWords;
+    }
+
+    @Override
+    public String toString(){
+        //need to mandate creator, for now not printing it.
+        //also need a way to print out the arraylist that works with CommandLineRunner.
+        /*String keywords = "";
+        for(String s: listOfKeyWords){
+            keywords += s;
+        }*/
+        //return String.format("AMA[id=%d, description='%s', keywords='%s']", AMA_ID, description, keywords);
+        return String.format("AMA[id=%d, description='%s']", AMA_ID, description);
     }
 }

@@ -24,7 +24,7 @@ public class AMA {
 
    private String description;
 
-   @ElementCollection
+   @ElementCollection(fetch = FetchType.EAGER)
    private List<String> listOfKeyWords;
 
    // Default constructor
@@ -110,9 +110,10 @@ public class AMA {
         //also need a way to print out the arraylist that works with CommandLineRunner.
         /*String keywords = "";
         for(String s: listOfKeyWords){
-            keywords += s;
+            keywords += s+",";
         }*/
         //return String.format("AMA[id=%d, description='%s', keywords='%s']", AMA_ID, description, keywords);
-        return String.format("AMA[id=%d, description='%s']", AMA_ID, description);
+        //return String.format("AMA[id=%d, description='%s']", AMA_ID, description);
+        return String.format("AMA[id=%d, description='%s', keywords='%s'']", AMA_ID, description, Arrays.toString(listOfKeyWords.toArray()));
     }
 }

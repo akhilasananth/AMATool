@@ -26,7 +26,9 @@ public class Application {
     public CommandLineRunner demo(UserRepository repository) {
         return (args) -> {
             // save a couple of users
-            repository.save(new User("Me", "Jonathan"));
+            User user = new User("Me", "Jonathan");
+            user.addAMAToUserList(new AMA("testAMA"));
+            repository.save(user);
             repository.save(new User("not me", "Bob"));
 
             log.info("Users from findAll(): ");

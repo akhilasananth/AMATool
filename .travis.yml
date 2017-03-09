@@ -1,6 +1,8 @@
 language: java
 jdk:
 - oraclejdk8
+notifications:
+  slack: 4806project:V6PLQsUajz6Z56weuixrnJTk
 deploy:
   provider: heroku
   api-key:

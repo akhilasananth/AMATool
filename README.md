@@ -6,7 +6,7 @@
 * Adhiraj Chakraborty
 
 ## Running Instructions:
-Go to address: http:localhost:8080/UserHandle/AMA/AMA-Creation
+Go to address: http:localhost:8080/ama
 
 ## Innitial Design: 
 ![uml](https://cloud.githubusercontent.com/assets/6691781/23742480/f8621cf8-047a-11e7-99e8-15f22560b2cf.PNG)

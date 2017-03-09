@@ -38,7 +38,7 @@ public class AMA {
 		listOfKeyWords =  new ArrayList<String>();
     }
 
-   public AMA ( String description, List<String> listOfKeyWords ){
+   public AMA ( String description, ArrayList<String> listOfKeyWords ){
        this.description = description;
        this.listOfKeyWords = listOfKeyWords;
    }
@@ -71,6 +71,14 @@ public class AMA {
 
     public void setDeadlineToVote(Date deadlineToVote) {
         this.deadlineToVote = deadlineToVote;
+    }
+    
+    public ArrayList<String> getKeyWords(String s){
+    	ArrayList<String> key=new ArrayList<String>();
+    	for (String use:s.split(",")){
+    		key.add(s);
+    	}
+    	return key;
     }
 
     // String has to be in the following format: MM/dd/yyyy, ex: "03/05/2017"
@@ -116,4 +124,6 @@ public class AMA {
         //return String.format("AMA[id=%d, description='%s']", AMA_ID, description);
         return String.format("AMA[id=%d, description='%s', keywords='%s'']", AMA_ID, description, Arrays.toString(listOfKeyWords.toArray()));
     }
+
+
 }

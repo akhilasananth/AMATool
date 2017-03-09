@@ -7,7 +7,6 @@
 <body>
 <h1>View</h1>
 <form action="#" th:action="@{/ama}" th:object="${ama}" method="post">
-    <p>Handle: <input type="text" th:field="*{handle}" /></p>
     <p>Description: <input type="text" th:field="*{description}" /></p>
     <p>Deadline To Vote: <input type="text" th:field="*{date}" /></p>
     <p>Key Words: <input type="text" th:field="*{keyWords}" /></p>

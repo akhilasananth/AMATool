@@ -26,8 +26,7 @@ public class AMAController {
 
 
 	@GetMapping("/ama")
-	public String displayAMA(Model model)
-        {
+	public String displayAMA(Model model) {
 		model.addAttribute("ama", new AMA());
 		return "ama";
 	}

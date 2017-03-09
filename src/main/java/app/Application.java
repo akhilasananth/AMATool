@@ -33,6 +33,7 @@ public class Application {
 
             log.info("Users from findAll(): ");
             log.info("---------------------------");
+
             for(User u: repository.findAll()){
                 log.info(u.toString());
             }

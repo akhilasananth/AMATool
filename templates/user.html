@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission for AddressBook</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Create</h1>
+<form action="#" th:action="@{/user}" th:object="${user}" method="post">
+    <p>Handle: <input type="text" th:field="*{handle}" /></p>
+    <p>Name: <input type="text" th:field="*{name}" /></p>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission for AddressBook</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Create</h1>
+<form action="#" th:action="@{/ama}" th:object="${ama}" method="post">
+    <p>Handle: <input type="text" th:field="*{handle}" /></p>
+    <p>Description: <input type="text" th:field="*{description}" /></p>
+    <p>Deadline To Vote: <input type="text" th:field="*{date}" /></p>
+    <p>Key Words: <input type="text" th:field="*{keyWords}" /></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+</body>
+</html>

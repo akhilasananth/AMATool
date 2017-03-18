@@ -10,5 +10,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel="users",path="users")
 public interface UserRepository extends CrudRepository<User, Long>{
     User findById(@Param("id") Long id);
-    User findByUserHandle(@Param("handle")String handle);
+    User findByHandle(@Param("handle")String handle);
 }

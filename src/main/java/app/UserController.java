@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Iterator;
+
 /**
  * Created by joelprakash on 3/17/2017.
  */
@@ -19,16 +21,38 @@ public class UserController {
 
 
     @PostMapping("/user-creation")
-    public String createAMA(@ModelAttribute("user-creation") User user){
+    public String createUser(@ModelAttribute("user") User user){
         //amamade.setListOfKeyWords(amamade.getKeyWords(tags));
         useR.save(user);
-        return "user-creation";
+        return "users";
     }//@PathVariable("handle") String handle
 
 
     @GetMapping("/user-creation")
-    public String displayAMA(Model model) {
+    public String displayUser(Model model) {
         model.addAttribute("user", new User());
         return "user-creation";
+    }
+
+    @GetMapping("/users")
+    public String listOfUsers(Model model) {
+        String allUsers = "";
+        Iterator it = useR.findAll().iterator();
+        while(it.hasNext()) {
+            allUsers += it.next().toString()+"\n";
+        }
+        model.addAttribute("allUsers",allUsers);
+        return "users";
+    }
+
+    @PostMapping("/users")
+    public String listOfUsers(Model model) {
+        String allUsers = "";
+        Iterator it = useR.findAll().iterator();
+        while(it.hasNext()) {
+            allUsers += it.next().toString()+"\n";
+        }
+        model.addAttribute("allUsers",allUsers);
+        return "users";
     }
 }

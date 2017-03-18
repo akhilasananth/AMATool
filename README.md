@@ -9,7 +9,8 @@
 Go to address: http:localhost:8080/ama
 
 ## Current 
-![ui_sketch](https://cloud.githubusercontent.com/assets/6691781/24066226/ed6a151c-0b46-11e7-9e8c-0b24dfee940b.jpg)
+![ui_sketch](https://cloud.githubusercontent.com/assets/6691781/24067620/88b5f078-0b55-11e7-8111-c3ff2f20d863.jpg)
+
 
 
 

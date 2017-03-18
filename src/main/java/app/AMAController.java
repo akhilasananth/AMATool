@@ -15,8 +15,8 @@ public class AMAController {
 	@Autowired
 	 AMARepository amaR;
 	 
-	 @Autowired
-	 UserRepository use;
+//	 @Autowired
+//	 UserRepository use;
 	//@PathVariable("handle") String handle
 
 	@PostMapping("/ama")

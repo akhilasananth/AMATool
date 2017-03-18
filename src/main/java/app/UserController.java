@@ -18,17 +18,17 @@ public class UserController {
     //@PathVariable("handle") String handle
 
 
-    @PostMapping("/user-creation")
+    @PostMapping("/user")
     public String createAMA(@ModelAttribute("user-creation") User user){
         //amamade.setListOfKeyWords(amamade.getKeyWords(tags));
         useR.save(user);
-        return "user-creation";
+        return "user";
     }//@PathVariable("handle") String handle
 
 
-    @GetMapping("/user-creation")
+    @GetMapping("/user")
     public String displayAMA(Model model) {
         model.addAttribute("user", new User());
-        return "user-creation";
+        return "user";
     }
 }

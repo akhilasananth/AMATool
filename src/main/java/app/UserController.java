@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by joelprakash on 3/17/2017.
@@ -16,7 +18,7 @@ import java.util.Iterator;
 public class UserController {
 
     @Autowired
-    UserRepository useR;
+    private UserRepository useR;
     //@PathVariable("handle") String handle
 
 
@@ -24,7 +26,7 @@ public class UserController {
     public String createUser(@ModelAttribute("user") User user){
         //amamade.setListOfKeyWords(amamade.getKeyWords(tags));
         useR.save(user);
-        return "users";
+        return "user-creation";
     }//@PathVariable("handle") String handle
 
 
@@ -34,25 +36,25 @@ public class UserController {
         return "user-creation";
     }
 
-    @GetMapping("/users")
+    @GetMapping("/userList")
     public String listOfUsers(Model model) {
-        String allUsers = "";
+        List<String> allUsers = new ArrayList<String>();
         Iterator it = useR.findAll().iterator();
         while(it.hasNext()) {
-            allUsers += it.next().toString()+"\n";
+            allUsers.add(it.next().toString());
         }
         model.addAttribute("allUsers",allUsers);
-        return "users";
+        return "userList";
     }
 
-    @PostMapping("/users")
-    public String listOfUsers(Model model) {
-        String allUsers = "";
-        Iterator it = useR.findAll().iterator();
-        while(it.hasNext()) {
-            allUsers += it.next().toString()+"\n";
-        }
-        model.addAttribute("allUsers",allUsers);
-        return "users";
-    }
+//    @PostMapping("/users")
+//    public String listOfUsers(Model model) {
+//        String allUsers = "";
+//        Iterator it = useR.findAll().iterator();
+//        while(it.hasNext()) {
+//            allUsers += it.next().toString()+"\n";
+//        }
+//        model.addAttribute("allUsers",allUsers);
+//        return "users";
+//    }
 }

@@ -27,6 +27,9 @@ public class AMA {
    @ElementCollection(fetch = FetchType.EAGER)
    private List<String> listOfKeyWords;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Question> listOfQuestions;
+
    // Default constructor
    public AMA(){
 	   listOfKeyWords =  new ArrayList<String>();

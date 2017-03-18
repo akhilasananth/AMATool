@@ -30,7 +30,7 @@ public class QuestionTest {
     public void getParent() {
 
         question.setParent(ama.getId());
-        assertEquals(ama, question.getParent());
+        assertEquals(ama.getId(), question.getParent());
     }
 
     @org.junit.Test

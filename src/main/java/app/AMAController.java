@@ -47,13 +47,16 @@ public class AMAController {
 	@GetMapping("/users/{userhandle}/amas/{id}")
 	public String displayAMA(@PathVariable String userhandle, @PathVariable String id, Model model){
 		long amaid = Long.parseLong(id);
+
 		parentId = amaid;
+
 		AMA ama = amaR.findById(amaid);
 		model.addAttribute("ama", ama.toString());
 		model.addAttribute("question", new Question(amaid));
 		model.addAttribute("userhandle", userhandle);
 		model.addAttribute("id", id);
 		return "displayAMA";
+
 	}
 
 	@PostMapping("/users/{userhandle}/amas/{id}")
@@ -74,11 +77,12 @@ public class AMAController {
 		model.addAttribute("amaQuestions", amaQuestions);
 		return "displayQuestions";
 	}
+
 /*
 	@GetMapping("/users/amas")
 	public String displayAMAsByUser(){
 
 		return "displayAMAsByUser";
 	}*/
-	
+
 }

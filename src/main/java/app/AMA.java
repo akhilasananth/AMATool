@@ -17,7 +17,7 @@ public class AMA {
 
     @Id
     @GeneratedValue
-    private long AMA_ID;
+    private long id;
 
     @OneToOne
     private User creator;
@@ -26,6 +26,9 @@ public class AMA {
 
    @ElementCollection(fetch = FetchType.EAGER)
    private List<String> listOfKeyWords;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Question> listOfQuestions;
 
    // Default constructor
    public AMA(){
@@ -45,8 +48,8 @@ public class AMA {
     // MM/dd/yyyy
    private Date deadlineToVote;
 
-    public long getAMA_ID() {
-        return AMA_ID;
+    public long getId() {
+        return id;
     }
 
     public User getCreator() {
@@ -62,7 +65,7 @@ public class AMA {
     }
 
     public void setDescription(String description) {
-        description = description;
+        this.description = description;
     }
 
     public Date getDeadlineToVote() {
@@ -122,7 +125,7 @@ public class AMA {
         }*/
         //return String.format("AMA[id=%d, description='%s', keywords='%s']", AMA_ID, description, keywords);
         //return String.format("AMA[id=%d, description='%s']", AMA_ID, description);
-        return String.format("AMA[id=%d, description='%s', keywords='%s'']", AMA_ID, description, Arrays.toString(listOfKeyWords.toArray()));
+        return String.format("AMA[id=%d, description='%s', keywords='%s'']", id, description, Arrays.toString(listOfKeyWords.toArray()));
     }
 
 

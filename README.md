@@ -6,10 +6,12 @@
 * Adhiraj Chakraborty
 
 ## Running Instructions:
-Go to address: http:localhost:8080/UserHandle/AMA/AMA-Creation
+Go to address: http:localhost:8080/ama
 
-## Innitial Design: 
-![uml](https://cloud.githubusercontent.com/assets/6691781/23742480/f8621cf8-047a-11e7-99e8-15f22560b2cf.PNG)
+## Current 
+![ui_sketch](https://cloud.githubusercontent.com/assets/6691781/24067620/88b5f078-0b55-11e7-8111-c3ff2f20d863.jpg)
+
+
 
 
 ## Initial Product Backlog:

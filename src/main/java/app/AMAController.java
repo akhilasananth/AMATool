@@ -21,6 +21,8 @@ public class AMAController {
 	UserRepository use;
 	//@PathVariable("handle") String handle
 
+	long parentId;
+
 	@Autowired
 	QuestionRepository questionR;
 
@@ -45,6 +47,7 @@ public class AMAController {
 	@GetMapping("/users/{userhandle}/amas/{id}")
 	public String displayAMA(@PathVariable String userhandle, @PathVariable String id, Model model){
 		long amaid = Long.parseLong(id);
+		parentId = amaid;
 		AMA ama = amaR.findById(amaid);
 		model.addAttribute("ama", ama.toString());
 		model.addAttribute("question", new Question(amaid));
@@ -55,6 +58,7 @@ public class AMAController {
 
 	@PostMapping("/users/{userhandle}/amas/{id}")
 	public String createQuestion(@PathVariable String userhandle, @ModelAttribute("question") Question question, Model model){
+		question.setParent(parentId);
 		questionR.save(question);
 		return "reviewQuestion";
 	}

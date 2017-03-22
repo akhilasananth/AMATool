@@ -12,7 +12,10 @@
 
 <form action="#" th:action="@{/users/{userhandle}/amas/{id}}" th:object="${question}" method="post">
     <p>Your Question: <input type="text" th:field="*{description}" /></p>
-    <p>Parent AMA: <input type="text" th:field="*{parent}" /></p>
+
+   <!-- <p>Parent AMA: <input type="text" th:field="*{parent}" /></p>
+   -->
+
     <p> <input type = "submit" value="Submit"/> <input type = "reset" value="Reset"/> </p>
 </form>
 <!--

@@ -12,6 +12,9 @@
 <form action="#" th:action="@{/ama}" th:object="${ama}" method="post">
     <p>Please enter AMA</p>
     <p>Description: <input type="text" th:field="*{description}" /></p>
+
+    <p>Deadline To Vote: <input type="text" th:field="*{deadlineToVote}" /></p>
+    <p>List Of Key Words: <input type="text" th:field="*{listOfKeyWords}" /></p>
     <p> <input type = "submit" value="Submit"/> <input type = "reset" value="Reset"/> </p>
 </form>
 

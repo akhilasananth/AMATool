@@ -19,6 +19,7 @@ public class UserController {
 
     @Autowired
     private UserRepository useR;
+    private List<String> allUsers = new ArrayList<String>();
     //@PathVariable("handle") String handle
 
 
@@ -38,7 +39,6 @@ public class UserController {
 
     @GetMapping("/userList")
     public String listOfUsers(Model model) {
-        List<String> allUsers = new ArrayList<String>();
         Iterator it = useR.findAll().iterator();
         while(it.hasNext()) {
             allUsers.add(it.next().toString());
@@ -46,6 +46,12 @@ public class UserController {
         model.addAttribute("allUsers",allUsers);
         return "userList";
     }
+
+    @GetMapping("/showUser")
+    public String showUser(Model model){
+        return "user-profile";
+    }
+
 
 //    @PostMapping("/users")
 //    public String listOfUsers(Model model) {

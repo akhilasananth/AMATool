@@ -65,8 +65,8 @@ public class User {
     @Override
     public String toString(){
         // need a way to print out the arraylist that works with CommandLineRunner.
-
-        return String.format("User[id=%d, handle='%s', name='%s', amas='%s']", id, handle, name, Arrays.toString(listOfAMAsCreated.toArray()))+ "\n";
+            return  name;
+//        return String.format("User[id=%d, handle='%s', name='%s', amas='%s']", id, handle, name, Arrays.toString(listOfAMAsCreated.toArray()))+ "\n";
         //return String.format("User[id=%d, handle='%s', name='%s']", id, handle, name);
         //return Arrays.toString(listOfAMAsCreated.toArray());
     }

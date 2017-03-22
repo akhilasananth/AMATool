@@ -9,7 +9,7 @@
 <form action="#" th:action="@{/userList}" th:object="${userList}" method="post">
 
     <ul th:each="user : ${allUsers}">
-        <li><span th:text=" ${user}" /></li>
+        <a href="/showUser"><li><span th:text=" ${user}" /></li></a>
     </ul>
 
 

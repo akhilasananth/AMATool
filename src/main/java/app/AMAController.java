@@ -46,6 +46,13 @@ public class AMAController {
 
 	@GetMapping("/users/{userhandle}/amas")
 	public String displayAMAsByUser(@PathVariable String userhandle, Model model){
+		List<String> amasList = new ArrayList<String>();
+		String handle=userhandle;
+		User u=use.findByHandle(handle);
+		for(AMA ama:u.getListOfAMAsCreated()){
+			amasList.add(ama.toString());
+		}
+		model.addAttribute("amasList",amasList);
 		return "displayAMAsByUser";
 	}
 
@@ -66,11 +73,11 @@ public class AMAController {
 
 	@PostMapping("/users/{userhandle}/amas/{id}")
 	public String createQuestion(@PathVariable String userhandle, @PathVariable String id, @ModelAttribute("question") Question question, Model model){
-		long amaid = Long.parseLong(id);
+		/*long amaid = Long.parseLong(id);
 		Calendar calobj = Calendar.getInstance();
 		if ((calobj.getTime()).compareTo(amaR.findById(amaid).getDeadlineToVote())<0){
 				return "displayQuestions";
-		}
+		}*/
 		question.setParent(parentId);
 		questionR.save(question);
 		return "reviewQuestion";

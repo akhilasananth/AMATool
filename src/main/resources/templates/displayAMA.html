@@ -9,7 +9,6 @@
 <h1>AMA</h1>
 <p th:text="'creator: ' + ${userhandle}" />
 <p th:text="${ama}" />
-
 <form action="#" th:action="@{/users/{userhandle}/amas/{id}}" th:object="${question}" method="post">
     <p>Your Question: <input type="text" th:field="*{description}" /></p>
 

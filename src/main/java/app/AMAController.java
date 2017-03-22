@@ -4,9 +4,11 @@ package app;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
@@ -33,8 +35,11 @@ public class AMAController {
 	}
 
 	@PostMapping("/ama")
-	public String createAMA(@ModelAttribute("ama") AMA ama){
+	public String createAMA(@ModelAttribute("ama") AMA ama, BindingResult result){
 		//amamade.setListOfKeyWords(amamade.getKeyWords(tags));
+		if (result.hasErrors()) {
+			return "ama";
+		}
 		amaR.save(ama);
 		return "user";
 	}//@PathVariable("handle") String handle
@@ -60,7 +65,12 @@ public class AMAController {
 	}
 
 	@PostMapping("/users/{userhandle}/amas/{id}")
-	public String createQuestion(@PathVariable String userhandle, @ModelAttribute("question") Question question, Model model){
+	public String createQuestion(@PathVariable String userhandle, @PathVariable String id, @ModelAttribute("question") Question question, Model model){
+		long amaid = Long.parseLong(id);
+		Calendar calobj = Calendar.getInstance();
+		if ((calobj.getTime()).compareTo(amaR.findById(amaid).getDeadlineToVote())<0){
+				return "displayQuestions";
+		}
 		question.setParent(parentId);
 		questionR.save(question);
 		return "reviewQuestion";

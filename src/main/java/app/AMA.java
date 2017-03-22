@@ -32,13 +32,13 @@ public class AMA {
 
    // Default constructor
    public AMA(){
-	   listOfKeyWords =  new ArrayList<String>();
+
+       this("");
 
    }
 
     public AMA ( String description){
-        this.description = description;
-		listOfKeyWords =  new ArrayList<String>();
+		this(description, new ArrayList<String>());
     }
 
    public AMA ( String description, ArrayList<String> listOfKeyWords ){
@@ -79,7 +79,7 @@ public class AMA {
     public ArrayList<String> getKeyWords(String s){
     	ArrayList<String> key=new ArrayList<String>();
     	for (String use:s.split(",")){
-    		key.add(s);
+    		key.add(use);
     	}
     	return key;
     }

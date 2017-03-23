@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class UserController {
 
     @Autowired
     private UserRepository useR;
+    private User currentUser = new User("akku","akhila");
     //@PathVariable("handle") String handle
 
 
@@ -38,14 +40,24 @@ public class UserController {
 
     @GetMapping("/userList")
     public String listOfUsers(Model model) {
-        List<String> allUsers = new ArrayList<String>();
+        List<User> allUsers = new ArrayList<User>();
         Iterator it = useR.findAll().iterator();
         while(it.hasNext()) {
-            allUsers.add(it.next().toString());
+            allUsers.add((User)it.next());
         }
         model.addAttribute("allUsers",allUsers);
         return "userList";
     }
+
+    @GetMapping("/showUser/{userhandle}")
+    public String showUser(@PathVariable String userhandle, Model model){
+        User user = useR.findByHandle(userhandle);
+        System.out.println(userhandle);
+        model.addAttribute("user",user);
+        return "user-profile";
+    }
+
+
 
 //    @PostMapping("/users")
 //    public String listOfUsers(Model model) {

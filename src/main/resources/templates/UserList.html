@@ -6,13 +6,12 @@
 </head>
 <body>
 <h1>Users </h1>
-<form action="#" th:action="@{/userList}" th:object="${userList}" method="post">
 
     <ul th:each="user : ${allUsers}">
-        <li><span th:text=" ${user}" /></li>
+        <a th:href="@{/showUser/{userhandle}(userhandle=${user.handle})}"><li><span th:text=" ${user}"/></li> </a>
     </ul>
 
 
-</form>
+
 </body>
 </html>

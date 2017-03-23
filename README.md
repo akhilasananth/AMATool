@@ -57,4 +57,6 @@ By the next Sprint, we hope to be able to:
 * AMA access functionality (public or private)
 * Searching functionality (everything in the search backlog)
 * Update answers for questions 
+* Create a welcome page
+* Implement login functionality 
 * Bootstrap the Web app

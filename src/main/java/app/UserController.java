@@ -31,7 +31,6 @@ public class UserController {
         return "user-creation";
     }//@PathVariable("handle") String handle
 
-
     @GetMapping("/user-creation")
     public String displayUser(Model model) {
         model.addAttribute("user", new User());

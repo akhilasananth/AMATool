@@ -10,6 +10,7 @@
 To:
  * Create a new User: http:localhost:8080/user-creation
  * The are navigation buttons to all other pages from this page 
+ * There is a Heroku link under the 'Current' heading below 
 
 ## Current
 [Heroku](https://amatool.herokuapp.com/user-creation)

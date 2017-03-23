@@ -1,4 +1,5 @@
 # AMA (Ask Me Anything) Tool 
+
 ## Team Members: Gang Of Four 
 * Akhila Ananth
 * Jonathan Scothorn
@@ -6,9 +7,12 @@
 * Adhiraj Chakraborty
 
 ## Running Instructions:
-Go to address: http:localhost:8080/ama
+To:
+ * Create a new User: http:localhost:8080/user-creation
+ * The are navigation buttons to all other pages from this page 
 
-## Current 
+## Current
+[Heroku](https://amatool.herokuapp.com/user-creation)
 ![ui_sketch](https://cloud.githubusercontent.com/assets/6691781/24067620/88b5f078-0b55-11e7-8111-c3ff2f20d863.jpg)
 
 
@@ -46,10 +50,11 @@ Have the ability to:
 Ask Me Anything tool: A user can create an AMA by entering a bit of preamble text and set a few parameters (such as the topic tags/keywords, the deadline, is it “open” to the public or “restricted” to a given supplied list). Users can ask a question or vote “up” or “down” existing questions. The questions can be listed in increasing or decreasing order of votes, and they dynamically move up or down as the votes are in. A user can vote on many questions in an AMA, but cannot vote more than once on any given question (that’s ballot stuffing!). In our design, the user has the choice to upvote or downvote on a question. When the deadline is reached, no more votes are allowed, and the user who created the AMA can now answer them by another deadline that is known to the participants. All AMAs (active and archived) that are public are searchable by keywords/tags, posted date, deadline, creator’s name/handle. User can “like” a given AMA and “follow” users, and so they can also search for most “liked” AMAs, or AMAs posted by the most “followed” users, or restrict their search to only those users they follow. One can also lookup a user profile and see which AMAs they’ve created or liked, and which other users they follow.
 
 ## Plan for the next sprint:
-By the next Sprint (Alpha Release), we hope to be able to:
-* Create questions 
-* Vote on questions
-* Implement deadline functionality: deadline to vote on questions
-* Restrict post after dealine for questions
-* Search for AMA (Context : User/Home page)
-* Search for users (Context : Home page)
+By the next Sprint, we hope to be able to:
+* Vote on Questions
+* Followers
+* Like functionality
+* AMA access functionality (public or private)
+* Searching functionality (everything in the search backlog)
+* Update answers for questions 
+* Bootstrap the Web app

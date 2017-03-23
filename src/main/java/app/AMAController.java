@@ -7,10 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Iterator;
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.*;
 
 
 @Controller
@@ -45,24 +44,27 @@ public class AMAController {
 	}//@PathVariable("handle") String handle
 
 	@GetMapping("/users/{userhandle}/amas")
-	public String displayAMAsByUser(@PathVariable String userhandle, Model model){
-		List<String> amasList = new ArrayList<String>();
+	public String displayAMAsByUser(@PathVariable String userhandle, Model model, HttpServletRequest request, HttpServletResponse response){
+		List<AMA> amasList = new ArrayList<AMA>();
 		String handle=userhandle;
 		User u=use.findByHandle(handle);
 		for(AMA ama:u.getListOfAMAsCreated()){
-			amasList.add(ama.toString());
+			amasList.add(ama);
 		}
 		model.addAttribute("amasList",amasList);
 		return "displayAMAsByUser";
 	}
 
+
 	@GetMapping("/users/{userhandle}/amas/{id}")
 	public String displayAMA(@PathVariable String userhandle, @PathVariable String id, Model model){
-		long amaid = Long.parseLong(id);
+
+			long amaid = Long.parseLong(id);
 
 		parentId = amaid;
 
 		AMA ama = amaR.findById(amaid);
+		//model.addAttribute("ama", ama.toString());
 		model.addAttribute("ama", ama.toString());
 		model.addAttribute("question", new Question(amaid));
 		model.addAttribute("userhandle", userhandle);

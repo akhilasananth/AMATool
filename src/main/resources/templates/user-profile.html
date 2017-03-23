@@ -1,9 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Test</title>
+    <title>User Profile</title>
 </head>
 <body>
-<h1>Test </h1>
+    <h1 th:text=" ${user}" />
+    <a href="/ama">Create AMA</a>
+    <a th:href="@{/users/{userhandle}/amas(userhandle=${user.handle})}"> Link to AMAs</a>
+
+
+
+
+
+
 </body>
 </html>

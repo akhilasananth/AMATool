@@ -17,6 +17,7 @@ public class User {
     @GeneratedValue
     private long id;
 
+    @Column
     private String handle;
 
     private String name;

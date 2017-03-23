@@ -28,25 +28,20 @@ public class AMAController {
 	@Autowired
 	QuestionRepository questionR;
 
-	@GetMapping("/user/{userhandle}/ama-creation")
-	public String displayAMA(@ModelAttribute("ama") AMA ama, @PathVariable String userhandle, Model model) {
-		this.handle = userhandle;
-
+	@GetMapping("/users/{userhandle}/ama-creation")
+	public String displayAMA(@ModelAttribute("ama") AMA ama, Model model) {
 		User user=useR.findByHandle(handle);
 		user.addAMAToUserList(ama);
-		model.addAttribute("ama", new AMA());
-		return "ama";
+		model.addAttribute("ama", ama);
+		return "ama-creation";
 	}
 
-	@PostMapping("/user/{userhandle}/ama-creation")
-	public String createAMA(@ModelAttribute("ama") AMA ama){
-		//amamade.setListOfKeyWords(amamade.getKeyWords(tags));
-		//String handle = request.getParameter("userhandle");
-
+	@PostMapping("/users/{userhandle}/amas/{id}")
+	public String createAMA(@ModelAttribute("ama") AMA ama, @PathVariable String userhandle,Model model){
 		amaR.save(ama);
+		return "displayAMA";
 
-		return "user";
-	}//@PathVariable("handle") String handle
+	}
 
 
 

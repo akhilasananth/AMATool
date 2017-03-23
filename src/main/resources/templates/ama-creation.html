@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>Add AMA</h1>
-<form action="#" th:action="@{/user/{userhandle}/ama-creation}" th:object="${ama}" method="post">
+<form action="#" th:action="@{/users/{userhandle}(userhandle=${userhandle})/amas/{id}(id=${ama.id})}" th:object="${ama}" method="post">
     <p>Please enter AMA</p>
     <p>Description: <input type="text" th:field="*{description}" /></p>
     <p>Deadline To Vote: <input type="text" th:field="*{deadlineToVote}" /></p>

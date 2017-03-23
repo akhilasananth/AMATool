@@ -5,13 +5,8 @@
 </head>
 <body>
     <h1 th:text=" ${user}" />
-    <a href="/ama">Create AMA</a>
+    <a th:href="@{/users/{userhandle}/ama-creation (userhandle=${user.handle})}">Create AMA</a>
     <a th:href="@{/users/{userhandle}/amas(userhandle=${user.handle})}"> Link to AMAs</a>
-
-
-
-
-
 
 </body>
 </html>

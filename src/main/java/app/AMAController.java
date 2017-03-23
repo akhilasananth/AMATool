@@ -19,35 +19,43 @@ public class AMAController {
 	AMARepository amaR;
 	 
 	@Autowired
-	UserRepository use;
+	UserRepository useR;
 	//@PathVariable("handle") String handle
 
 	long parentId;
+	String handle;
 
 	@Autowired
 	QuestionRepository questionR;
 
-	@GetMapping("/ama")
-	public String displayAMA(Model model) {
+	@GetMapping("/user/{userhandle}/ama-creation")
+	public String displayAMA(@ModelAttribute("ama") AMA ama, @PathVariable String userhandle, Model model) {
+		this.handle = userhandle;
+
+		User user=useR.findByHandle(handle);
+		user.addAMAToUserList(ama);
 		model.addAttribute("ama", new AMA());
 		return "ama";
 	}
 
-	@PostMapping("/ama")
-	public String createAMA(@ModelAttribute("ama") AMA ama, BindingResult result){
+	@PostMapping("/user/{userhandle}/ama-creation")
+	public String createAMA(@ModelAttribute("ama") AMA ama){
 		//amamade.setListOfKeyWords(amamade.getKeyWords(tags));
-		if (result.hasErrors()) {
-			return "ama";
-		}
+		//String handle = request.getParameter("userhandle");
+
 		amaR.save(ama);
+
 		return "user";
 	}//@PathVariable("handle") String handle
+
+
+
 
 	@GetMapping("/users/{userhandle}/amas")
 	public String displayAMAsByUser(@PathVariable String userhandle, Model model, HttpServletRequest request, HttpServletResponse response){
 		List<AMA> amasList = new ArrayList<AMA>();
 		String handle=userhandle;
-		User u=use.findByHandle(handle);
+		User u=useR.findByHandle(handle);
 		for(AMA ama:u.getListOfAMAsCreated()){
 			amasList.add(ama);
 		}

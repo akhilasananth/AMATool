@@ -86,7 +86,6 @@ public class AMAController {
 
 	}}
 
-
 	@GetMapping("/users/{userhandle}/amas/{id}/questions")
 	public String displayAMAQuestions(@PathVariable String userhandle, @PathVariable String id, Model model){
 		List<String> amaQuestions = new ArrayList<String>();

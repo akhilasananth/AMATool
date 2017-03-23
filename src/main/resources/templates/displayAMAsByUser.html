@@ -9,9 +9,11 @@
 
 <p th:text="'Viewing amas belonging to: ' + ${userhandle}" />
 
-    <ul th:each="AMA : ${amasList}">
-        <p th:text="${AMA}"/>
+<h1>Users </h1>
 
-    </ul>
+<ul th:each="ama : ${amasList}">
+    <a th:href="@{/users/{userhandle}(userhandle=${userhandle})/amas/{id}(id=${ama.id})}"><li><span th:text=" ${ama}"/></li> </a>
+</ul>
+
 </body>
 </html>

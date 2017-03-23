@@ -6,9 +6,12 @@
 </head>
 <body>
 <h1>Username</h1>
+
 <p th:text="'Viewing amas belonging to: ' + ${userhandle}" />
 
+    <ul th:each="AMA : ${amasList}">
+        <p th:text="${AMA}"/>
 
-
+    </ul>
 </body>
 </html>

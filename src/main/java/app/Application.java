@@ -28,6 +28,7 @@ public class Application {
             // save a couple of users
             User user = new User("Me", "Jonathan");
             user.addAMAToUserList(new AMA("testAMA"));
+            user.addAMAToUserList(new AMA("testAMA2"));
             repository.save(user);
             repository.save(new User("not me", "Bob"));
 

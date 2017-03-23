@@ -1,5 +1,7 @@
 package app;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -46,6 +48,7 @@ public class AMA {
        this.listOfKeyWords = listOfKeyWords;
    }
     // MM/dd/yyyy
+    //@NotEmpty(message = "Please enter the date in MM/DD/YYYY format")
    private Date deadlineToVote;
 
     public long getId() {

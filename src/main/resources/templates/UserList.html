@@ -8,7 +8,7 @@
 <h1>Users </h1>
 
     <ul th:each="user : ${allUsers}">
-        <a th:href="@{/showUser/{userhandle}(userhandle=${user.handle})}"><li><span th:text=" ${user}"/></li> </a>
+        <a th:href="@{/users/{userhandle}(userhandle=${user.handle})}"><li><span th:text=" ${user}"/></li> </a>
     </ul>
 
 </body>

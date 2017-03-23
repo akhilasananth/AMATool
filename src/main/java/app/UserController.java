@@ -49,7 +49,7 @@ public class UserController {
         return "userList";
     }
 
-    @GetMapping("/showUser/{userhandle}")
+    @GetMapping("/users/{userhandle}")
     public String showUser(@PathVariable String userhandle, Model model){
         User user = useR.findByHandle(userhandle);
         System.out.println(userhandle);

@@ -65,7 +65,7 @@ public class AMAController {
 
 		AMA ama = amaR.findById(amaid);
 		//model.addAttribute("ama", ama.toString());
-		model.addAttribute("ama", ama.toString());
+		model.addAttribute("ama", ama);
 		model.addAttribute("question", new Question(amaid));
 		model.addAttribute("userhandle", userhandle);
 		model.addAttribute("id", id);

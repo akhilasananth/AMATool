@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by joelprakash on 3/5/2017.
@@ -27,8 +29,20 @@ public class Application {
         return (args) -> {
             // save a couple of users
             User user = new User("Me", "Jonathan");
-            user.addAMAToUserList(new AMA("testAMA"));
-            user.addAMAToUserList(new AMA("testAMA2"));
+            Date date=new Date();
+            AMA ama1=new AMA("testAMA1");
+            AMA ama2=new AMA("testAMA2");
+            AMA ama3=new AMA("testAMA3");
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            cal.add(Calendar.HOUR_OF_DAY, 1);
+            date = cal.getTime();
+            ama1.setDeadlineToVote(date);
+            ama2.setDeadlineToVote(new Date(12/01/1999));
+            //ama3.setDeadlineToVote(Calendar.getInstance().getTime());
+            user.addAMAToUserList(ama1);
+            user.addAMAToUserList(ama2);
+            user.addAMAToUserList(ama3);
             repository.save(user);
             repository.save(new User("not me", "Bob"));
 

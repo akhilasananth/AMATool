@@ -64,6 +64,7 @@ public class AMAController {
 		parentId = amaid;
 
 		AMA ama = amaR.findById(amaid);
+
 		//model.addAttribute("ama", ama.toString());
 		model.addAttribute("ama", ama.toString());
 		model.addAttribute("question", new Question(amaid));
@@ -75,15 +76,16 @@ public class AMAController {
 
 	@PostMapping("/users/{userhandle}/amas/{id}")
 	public String createQuestion(@PathVariable String userhandle, @PathVariable String id, @ModelAttribute("question") Question question, Model model){
-		/*long amaid = Long.parseLong(id);
-		Calendar calobj = Calendar.getInstance();
-		if ((calobj.getTime()).compareTo(amaR.findById(amaid).getDeadlineToVote())<0){
-				return "displayQuestions";
-		}*/
+		if ((Calendar.getInstance().getTime()).after(amaR.findById(parentId).getDeadlineToVote())){
+			return "deadAMA";
+		}
+		else{
 		question.setParent(parentId);
-		questionR.save(question);
-		return "reviewQuestion";
-	}
+			questionR.save(question);
+			return "reviewQuestion";
+
+	}}
+
 
 	@GetMapping("/users/{userhandle}/amas/{id}/questions")
 	public String displayAMAQuestions(@PathVariable String userhandle, @PathVariable String id, Model model){

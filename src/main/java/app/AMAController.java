@@ -14,14 +14,13 @@ import java.util.*;
 
 @Controller
 public class AMAController {
-
 	@Autowired
 	AMARepository amaR;
 	 
 	@Autowired
 	UserRepository useR;
 	//@PathVariable("handle") String handle
-
+	private User user = new User();
 	long parentId;
 	String handle;
 
@@ -29,20 +28,20 @@ public class AMAController {
 	QuestionRepository questionR;
 
 	@GetMapping("/user/{userhandle}/ama-creation")
-	public String displayAMA(@ModelAttribute("ama") AMA ama, @PathVariable String userhandle, Model model) {
+	public String displayAMA(@ModelAttribute("ama") AMA ama,@PathVariable String userhandle, Model model) {
 		this.handle = userhandle;
-
-		User user=useR.findByHandle(handle);
+		user=useR.findByHandle(handle);
 		user.addAMAToUserList(ama);
 		model.addAttribute("ama", new AMA());
 		return "ama";
 	}
 
 	@PostMapping("/user/{userhandle}/ama-creation")
-	public String createAMA(@ModelAttribute("ama") AMA ama){
+	public String createAMA(@ModelAttribute("ama") AMA ama, @PathVariable String userhandle,Model model){
 		//amamade.setListOfKeyWords(amamade.getKeyWords(tags));
 		//String handle = request.getParameter("userhandle");
-
+		user=useR.findByHandle(handle);
+		model.addAttribute("user",user);
 		amaR.save(ama);
 
 		return "user";

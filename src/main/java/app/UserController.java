@@ -20,7 +20,6 @@ public class UserController {
 
     @Autowired
     private UserRepository useR;
-    private User currentUser = new User("akku","akhila");
     //@PathVariable("handle") String handle
 
 
@@ -56,16 +55,4 @@ public class UserController {
         return "user-profile";
     }
 
-
-
-//    @PostMapping("/users")
-//    public String listOfUsers(Model model) {
-//        String allUsers = "";
-//        Iterator it = useR.findAll().iterator();
-//        while(it.hasNext()) {
-//            allUsers += it.next().toString()+"\n";
-//        }
-//        model.addAttribute("allUsers",allUsers);
-//        return "users";
-//    }
 }

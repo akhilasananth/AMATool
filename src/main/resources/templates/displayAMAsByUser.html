@@ -12,7 +12,7 @@
 <h1>Users </h1>
 
 <ul th:each="ama : ${amasList}">
-    <a th:href="@{/users/{userhandle}(userhandle=${userhandle})/amas/{id}(id=${ama.id})}"><li><span th:text=" ${ama}"/></li> </a>
+    <a th:href="@{/users/{userhandle}/amas/{id}(userhandle=${user.handle},id=${ama.id})}"><li><span th:text=" ${ama}"/></li> </a>
 </ul>
 
 </body>

@@ -14,14 +14,13 @@ import java.util.*;
 
 @Controller
 public class AMAController {
-
 	@Autowired
 	AMARepository amaR;
 	 
 	@Autowired
 	UserRepository useR;
 	//@PathVariable("handle") String handle
-
+	private User user = new User();
 	long parentId;
 	String handle;
 
@@ -29,23 +28,21 @@ public class AMAController {
 	QuestionRepository questionR;
 
 	@GetMapping("/user/{userhandle}/ama-creation")
-	public String displayAMA(@ModelAttribute("ama") AMA ama, @PathVariable String userhandle, Model model) {
+	public String displayAMA(@PathVariable String userhandle, Model model) {
 		this.handle = userhandle;
-
-		User user=useR.findByHandle(handle);
-		user.addAMAToUserList(ama);
+		user=useR.findByHandle(handle);
 		model.addAttribute("ama", new AMA());
+		model.addAttribute("user",user);
 		return "ama";
 	}
 
 	@PostMapping("/user/{userhandle}/ama-creation")
-	public String createAMA(@ModelAttribute("ama") AMA ama){
-		//amamade.setListOfKeyWords(amamade.getKeyWords(tags));
-		//String handle = request.getParameter("userhandle");
-
+	public String createAMA(@ModelAttribute("ama") AMA ama, @PathVariable String userhandle,Model model){
+		user=useR.findByHandle(handle);
+		model.addAttribute("user",user);
 		amaR.save(ama);
-
-		return "user";
+		user.addAMAToUserList(ama);
+		return "ama";
 	}//@PathVariable("handle") String handle
 
 
@@ -54,11 +51,12 @@ public class AMAController {
 	@GetMapping("/users/{userhandle}/amas")
 	public String displayAMAsByUser(@PathVariable String userhandle, Model model, HttpServletRequest request, HttpServletResponse response){
 		List<AMA> amasList = new ArrayList<AMA>();
-		String handle=userhandle;
-		User u=useR.findByHandle(handle);
-		for(AMA ama:u.getListOfAMAsCreated()){
+		for(AMA ama:user.getListOfAMAsCreated()){
 			amasList.add(ama);
 		}
+        user =useR.findByHandle(handle);
+		model.addAttribute("ama", new AMA());
+        model.addAttribute("user",user);
 		model.addAttribute("amasList",amasList);
 		return "displayAMAsByUser";
 	}

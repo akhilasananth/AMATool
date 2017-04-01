@@ -23,6 +23,8 @@ public class AMAController {
 	private User user = new User();
 	long parentId;
 	String handle;
+	long creatorID;
+	long displayAMAID;
 
 	@Autowired
 	QuestionRepository questionR;
@@ -31,6 +33,7 @@ public class AMAController {
 	public String displayAMA(@PathVariable String userhandle, Model model) {
 		this.handle = userhandle;
 		user=useR.findByHandle(handle);
+		creatorID=user.getId();
 		model.addAttribute("ama", new AMA());
 		model.addAttribute("user",user);
 		return "ama";
@@ -38,11 +41,10 @@ public class AMAController {
 
 	@PostMapping("/user/{userhandle}/ama-creation")
 	public String createAMA(@ModelAttribute("ama") AMA ama, @PathVariable String userhandle,Model model){
-		user=useR.findByHandle(handle);
-		model.addAttribute("user",user);
+		ama.setCreatorID(creatorID);
 		amaR.save(ama);
 		user.addAMAToUserList(ama);
-		return "ama";
+		return "user";
 	}//@PathVariable("handle") String handle
 
 
@@ -51,10 +53,16 @@ public class AMAController {
 	@GetMapping("/users/{userhandle}/amas")
 	public String displayAMAsByUser(@PathVariable String userhandle, Model model, HttpServletRequest request, HttpServletResponse response){
 		List<AMA> amasList = new ArrayList<AMA>();
-		for(AMA ama:user.getListOfAMAsCreated()){
-			amasList.add(ama);
-		}
+		//for(AMA ama:user.getListOfAMAsCreated()){
+		//	amasList.add(ama);
+		//}
+
         user =useR.findByHandle(handle);
+        displayAMAID=user.getId();
+		ListIterator<AMA> listIterator = amaR.findAllByCreatorID(displayAMAID).listIterator();
+		while(listIterator.hasNext()){
+			amasList.add(listIterator.next());
+		}
 		model.addAttribute("ama", new AMA());
         model.addAttribute("user",user);
 		model.addAttribute("amasList",amasList);

@@ -26,6 +26,18 @@ public class AMA {
 
    private String description;
 
+    public long getCreatorID() {
+        return creatorID;
+    }
+
+    public void setCreatorID(long creatorID) {
+        this.creatorID = creatorID;
+    }
+
+    private long creatorID;
+
+
+
    @ElementCollection(fetch = FetchType.EAGER)
    private List<String> listOfKeyWords;
 

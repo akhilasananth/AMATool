@@ -14,5 +14,5 @@ import java.util.List;
 public interface AMARepository extends CrudRepository<AMA, Long> {
 AMA findById(@Param("id") Long id);
 AMA findByDescription(@Param("description")String description);
-
+List<AMA> findAllByCreatorID(@Param("creatorID")Long creatorID);
 }

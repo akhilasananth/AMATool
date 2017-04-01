@@ -13,6 +13,10 @@ import java.util.List;
 @Entity
 public class User {
 
+    public long getId() {
+        return id;
+    }
+
     @Id
     @GeneratedValue
     private long id;

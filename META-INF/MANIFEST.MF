@@ -154,7 +154,10 @@ Import-Package: com.fasterxml.jackson.annotation;version="[2.9,3)",com
  nd.util;version="[2.9,3)",javax.xml.datatype,javax.xml.namespace,java
  x.xml.parsers,org.w3c.dom,org.w3c.dom.bootstrap,org.w3c.dom.ls,org.xm
  l.sax,
- javax.persistence
+ javax.persistence,
+ javax.validation,
+ javax.validation,
+ org.hibernate.validator
 Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
 Specification-Title: jackson-databind
 Specification-Vendor: FasterXML

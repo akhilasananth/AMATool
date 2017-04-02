@@ -56,14 +56,15 @@ public class AMAController {
 		//for(AMA ama:user.getListOfAMAsCreated()){
 		//	amasList.add(ama);
 		//}
+
 		handle=new String(userhandle);
+
         user =useR.findByHandle(handle);
         displayAMAID=user.getId();
 		ListIterator<AMA> listIterator = amaR.findAllByCreatorID(displayAMAID).listIterator();
 		while(listIterator.hasNext()){
 			amasList.add(listIterator.next());
 		}
-		//model.addAttribute("ama", new AMA());
         model.addAttribute("user",user);
 		model.addAttribute("amasList",amasList);
 		return "displayAMAsByUser";

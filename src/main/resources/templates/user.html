@@ -10,5 +10,13 @@
 <p th:text="'description: ' + ${ama.description}" ></p>
 <p th:text="'deadlineToVote: ' + ${ama.deadlineToVote}" ></p>
 <p th:text="'listOfKeyWords: ' + ${ama.listOfKeyWords}" ></p>
+
+<button onclick="submit()">Submit Another AMA</button>
+<script>
+    function submit(){
+        window.history.back()
+    }
+</script>
+
 </body>
 </html>

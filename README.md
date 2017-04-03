@@ -53,11 +53,10 @@ Ask Me Anything tool: A user can create an AMA by entering a bit of preamble tex
 ## Plan for the next sprint:
 By the next Sprint, we hope to be able to:
 * Vote on Questions
-* Followers
-* Like functionality
-* AMA access functionality (public or private)
-* Searching functionality (everything in the search backlog)
 * Update answers for questions 
-* Create a welcome page
-* Implement login functionality 
+* Create a welcome page: Implement login functionality 
 * Bootstrap the Web app
+* Testing 
+* Coverage of unit tests
+* Fix current bugs
+

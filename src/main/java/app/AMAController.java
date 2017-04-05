@@ -30,7 +30,7 @@ public class AMAController {
 	@Autowired
 	QuestionRepository questionR;
 
-	@GetMapping("/users/{userhandle}/ama-creation")
+	@GetMapping("/user/{userhandle}/ama-creation")
 	public String displayAMA(@PathVariable String userhandle, Model model) {
 		this.handle = userhandle;
 		user=useR.findByHandle(handle);
@@ -41,7 +41,7 @@ public class AMAController {
 		return "ama";
 	}
 
-	@PostMapping("/users/{userhandle}/ama-creation")
+	@PostMapping("/user/{userhandle}/ama-creation")
 	public String createAMA(@ModelAttribute("ama") AMA ama, @PathVariable String userhandle,Model model){
 		String userName = this.currentUserName;
 		model.addAttribute("userName",userName);

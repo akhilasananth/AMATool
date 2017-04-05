@@ -25,22 +25,26 @@ public class AMAController {
 	String handle;
 	long creatorID;
 	long displayAMAID;
+	private String currentUserName = "none";
 
 	@Autowired
 	QuestionRepository questionR;
 
-	@GetMapping("/user/{userhandle}/ama-creation")
+	@GetMapping("/users/{userhandle}/ama-creation")
 	public String displayAMA(@PathVariable String userhandle, Model model) {
 		this.handle = userhandle;
 		user=useR.findByHandle(handle);
+		this.currentUserName = user.getName();
 		creatorID=user.getId();
 		model.addAttribute("ama", new AMA());
 		model.addAttribute("user",user);
 		return "ama";
 	}
 
-	@PostMapping("/user/{userhandle}/ama-creation")
+	@PostMapping("/users/{userhandle}/ama-creation")
 	public String createAMA(@ModelAttribute("ama") AMA ama, @PathVariable String userhandle,Model model){
+		String userName = this.currentUserName;
+		model.addAttribute("userName",userName);
 		ama.setCreatorID(creatorID);
 		amaR.save(ama);
 		user.addAMAToUserList(ama);

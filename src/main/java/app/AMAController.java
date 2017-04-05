@@ -63,7 +63,9 @@ public class AMAController {
 
 		handle=new String(userhandle);
 
-        user =useR.findByHandle(handle);
+        user = useR.findByHandle(handle);
+		String userName = user.getName();
+		model.addAttribute("userName",userName);
         displayAMAID=user.getId();
 		ListIterator<AMA> listIterator = amaR.findAllByCreatorID(displayAMAID).listIterator();
 		while(listIterator.hasNext()){

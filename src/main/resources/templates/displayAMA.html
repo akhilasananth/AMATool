@@ -18,7 +18,7 @@
 </form>
 
 <a th:href="@{/users/{userhandle}/amas/{id}/questions(userhandle=${user.handle},id=${id})}">View Questions</a>
-<a href=".">Back to all AMAs</a>
+<a th:href="@{/users/{userhandle}/amas(userhandle=${user.handle})}">View All AMAs</a>
 
 </body>
 </html>

@@ -29,7 +29,7 @@ public class AMAController {
 	@Autowired
 	QuestionRepository questionR;
 
-	@GetMapping("/user/{userhandle}/ama-creation")
+	@GetMapping("/users/{userhandle}/ama-creation")
 	public String displayAMA(@PathVariable String userhandle, Model model) {
 		this.handle = userhandle;
 		user=useR.findByHandle(handle);
@@ -39,7 +39,7 @@ public class AMAController {
 		return "ama";
 	}
 
-	@PostMapping("/user/{userhandle}/ama-creation")
+	@PostMapping("/users/{userhandle}/ama-creation")
 	public String createAMA(@ModelAttribute("ama") AMA ama, @PathVariable String userhandle,Model model){
 		ama.setCreatorID(creatorID);
 		amaR.save(ama);
@@ -79,8 +79,10 @@ public class AMAController {
 		parentId = amaid;
 
 		AMA ama = amaR.findById(amaid);
+		user = useR.findByHandle(userhandle);
 
 		//model.addAttribute("ama", ama.toString());
+		model.addAttribute("user", user);
 		model.addAttribute("ama", ama);
 		model.addAttribute("question", new Question(amaid));
 		model.addAttribute("userhandle", userhandle);

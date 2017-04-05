@@ -8,5 +8,12 @@
 <h1>Question</h1>
 <p th:text="'Your question was: ' + ${question.description}" />
 
+<button onclick="submit()">Back to AMA</button>
+<script>
+    function submit(){
+        window.history.back()
+    }
+</script>
+
 </body>
 </html>

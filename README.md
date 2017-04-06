@@ -16,18 +16,18 @@ To:
 [Heroku](https://amatool.herokuapp.com/user-creation)
 ![ui_sketch](https://cloud.githubusercontent.com/assets/6691781/24067620/88b5f078-0b55-11e7-8111-c3ff2f20d863.jpg)
 
-REST API: 
-/home GET: homepage
-/user-creation GET: account creation form
-/user-creation POST: submit account creation form
-/users GET: show existing users
-/users/{userhandle} GET: show a user profile corresponding to the userhandle
-/users/{userhandle}/ama-creation GET: ama creation form
-/users/{userhandle}/ama-creation POST: submit AMA creation form
-/users/{userhandle}/amas GET: show AMAs of the user corresponding to userhandle
-/users/{userhandle}/amas/{amaid} GET: show a AMA corresponding to the amaid (including question submission)
-/users/{userhandle}/amas/{amaid} POST: submit a question to the AMA corresponding to amaid
-/users/{userhandle}/amas/{amaid}/questions GET: view all questions associated with the AMA corresponding to amaid
+## REST API: 
+* /home GET: homepage
+* /user-creation GET: account creation form
+* /user-creation POST: submit account creation form
+* /users GET: show existing users
+* /users/{userhandle} GET: show a user profile corresponding to the userhandle
+* /users/{userhandle}/ama-creation GET: ama creation form
+* /users/{userhandle}/ama-creation POST: submit AMA creation form
+* /users/{userhandle}/amas GET: show AMAs of the user corresponding to userhandle
+* /users/{userhandle}/amas/{amaid} GET: show a AMA corresponding to the amaid (including question submission)
+* /users/{userhandle}/amas/{amaid} POST: submit a question to the AMA corresponding to amaid
+* /users/{userhandle}/amas/{amaid}/questions GET: view all questions associated with the AMA corresponding to amaid
 
 
 ## Initial Product Backlog:

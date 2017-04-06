@@ -19,6 +19,26 @@ public class UserController {
     private UserRepository useR;
     //@PathVariable("handle") String handle
 
+<<<<<<< HEAD
+=======
+
+    @RequestMapping("/")
+    public String root() {
+        return "redirect:/home";
+    }
+
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @RequestMapping("/login-error")
+    public String loginError(Model model) {
+        model.addAttribute("loginError", true);
+        return "login";
+    }
+
+>>>>>>> master
     @PostMapping("/user-creation")
     public String createUser(@ModelAttribute("user") User user){
         //amamade.setListOfKeyWords(amamade.getKeyWords(tags));

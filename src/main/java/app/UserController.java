@@ -3,10 +3,7 @@ package app;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,6 +20,22 @@ public class UserController {
     //@PathVariable("handle") String handle
 
 
+    @RequestMapping("/")
+    public String root() {
+        return "redirect:/home";
+    }
+
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @RequestMapping("/login-error")
+    public String loginError(Model model) {
+        model.addAttribute("loginError", true);
+        return "login";
+    }
+
     @PostMapping("/user-creation")
     public String createUser(@ModelAttribute("user") User user){
         //amamade.setListOfKeyWords(amamade.getKeyWords(tags));
@@ -36,7 +49,7 @@ public class UserController {
         return "user-creation";
     }
 
-    @GetMapping("/userList")
+    @GetMapping("/users")
     public String listOfUsers(Model model) {
         List<User> allUsers = new ArrayList<User>();
         Iterator it = useR.findAll().iterator();
